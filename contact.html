@@ -34,6 +34,11 @@
     nav { display: flex; align-items: center; gap: 28px; color: #4d5751; font-size: 13px; }
     nav a:hover, .details a:hover { color: var(--green); }
     nav .active { color: var(--ink); border-bottom: 1px solid var(--green); padding-bottom: 5px; }
+    .menu-toggle { display: none; width: 40px; height: 40px; place-items: center; border: 1px solid var(--line); background: transparent; color: var(--ink); cursor: pointer; }
+    .menu-toggle .icon { width: 20px; height: 20px; }
+    .menu-toggle .close-icon { display: none; }
+    .menu-toggle[aria-expanded="true"] .menu-icon { display: none; }
+    .menu-toggle[aria-expanded="true"] .close-icon { display: inline-block; }
     main { padding: 66px 0 84px; }
     .kicker, .index, .detail-label, .micro { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0; }
     .layout { display: grid; grid-template-columns: .82fr 1.18fr; gap: 70px; align-items: start; }
@@ -73,6 +78,12 @@
     footer a:hover { color: var(--green); }
     @media (max-width: 800px) {
       .wrap { width: min(100% - 40px, 600px); }
+      .top { position: relative; }
+      .menu-toggle { display: grid; }
+      nav { display: none; position: absolute; top: calc(100% + 8px); right: 0; z-index: 10; min-width: 205px; flex-direction: column; align-items: stretch; gap: 0; padding: 5px 0; border: 1px solid var(--line); background: var(--white); color: var(--ink); box-shadow: 0 10px 24px #17211d20; }
+      nav.open { display: flex; }
+      nav a, nav .active { display: flex; align-items: center; justify-content: space-between; padding: 12px 15px; border: 0; font-size: 13px; }
+      nav a + a { border-top: 1px solid var(--line); }
       main { padding: 50px 0 64px; }
       .layout { grid-template-columns: 1fr; gap: 36px; }
       .details { max-width: 480px; margin-top: 25px; }
@@ -80,8 +91,6 @@
     @media (max-width: 500px) {
       .wrap { width: calc(100% - 32px); }
       .top { height: 66px; }
-      nav { gap: 13px; font-size: 11px; }
-      nav a:first-child { display: none; }
       .form-panel { padding: 22px 18px; box-shadow: 7px 7px 0 var(--lime); }
       .fields { grid-template-columns: 1fr; gap: 15px; }
       .field.full { grid-column: auto; }
@@ -94,7 +103,11 @@
 <body>
   <header class="wrap top">
     <a class="brand" href="index.html"><img src="logo.svg" alt=""><span>RISHRAJ SENGER<b>.</b></span></a>
-    <nav aria-label="Main navigation"><a href="index.html#work">Portfolio</a><a href="index.html#about">About</a><a class="active" href="contact.html" aria-current="page">Contact</a></nav>
+    <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+      <svg class="icon menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg class="icon close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+    </button>
+    <nav id="site-nav" aria-label="Main navigation"><a href="index.html#work">Portfolio</a><a href="index.html#about">About</a><a class="active" href="contact.html" aria-current="page">Contact</a></nav>
   </header>
   <main class="wrap">
     <div class="layout">
@@ -130,6 +143,26 @@
   </main>
   <footer class="wrap"><span class="micro">© 2026 RISHRAJ SENGER · DATA ANALYST</span><a href="index.html"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7"/><path d="M5 9v12h14V9M9 21v-7h6v7"/></svg> Back to portfolio</a></footer>
   <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const siteNav = document.getElementById('site-nav');
+    const setMenuOpen = open => {
+      menuToggle.setAttribute('aria-expanded', String(open));
+      menuToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      siteNav.classList.toggle('open', open);
+    };
+    menuToggle.addEventListener('click', () => setMenuOpen(menuToggle.getAttribute('aria-expanded') !== 'true'));
+    siteNav.addEventListener('click', event => {
+      if (event.target.closest('a')) setMenuOpen(false);
+    });
+    document.addEventListener('click', event => {
+      if (!event.target.closest('.top')) setMenuOpen(false);
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && menuToggle.getAttribute('aria-expanded') === 'true') {
+        setMenuOpen(false);
+        menuToggle.focus();
+      }
+    });
     const scriptUrl = 'https://script.google.com/macros/s/AKfycby-quCteOUVhDjrvolh3UhIp4AXvZfv6fd1qzEyEsG6Pct1B_6EjXGYXe4HQD9XeZ-W4A/exec';
     const form = document.getElementById('contact-form');
     const formStatus = document.getElementById('form-status');
