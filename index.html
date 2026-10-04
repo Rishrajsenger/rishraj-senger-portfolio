@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3f4ef">
+  <meta name="description" content="Rishraj Senger — Data Analyst focused on sales insights, MIS reporting, and workflow automation.">
+  <title>Rishraj Senger — Data Analyst</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #f3f4ef;
+      --ink: #171b19;
+      --muted: #68716c;
+      --line: #d9ddd7;
+      --green: #1d6548;
+      --lime: #d8f36a;
+      --orange: #f17a52;
+      --white: #fff;
+      --sans: "Lato", sans-serif;
+      --display: "Poppins", sans-serif;
+      --mono: "DM Mono", monospace;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1120px, calc(100% - 56px)); margin: 0 auto; }
+    .top { height: 76px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--line); }
+    .brand { display: inline-flex; align-items: center; gap: 10px; font: 700 15px var(--display); }
+    .brand img { display: block; width: 34px; height: 34px; }
+    .brand span b { color: var(--green); }
+    nav { display: flex; align-items: center; gap: 30px; color: #4d5751; font-size: 13px; }
+    nav a:hover, .social a:hover { color: var(--green); }
+    nav .nav-cta { color: var(--ink); border-bottom: 1px solid var(--green); padding-bottom: 5px; }
+    .hero { display: grid; grid-template-columns: 1.05fr .95fr; gap: 64px; align-items: center; padding: 76px 0 90px; }
+    .kicker, .index, .label, .micro, .tag { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0; }
+    .kicker { display: flex; align-items: center; gap: 10px; color: var(--green); font-size: 11px; }
+    .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 4px #1d65481a; }
+    h1 { max-width: 590px; margin: 21px 0 17px; font: 600 clamp(51px, 6vw, 76px)/.98 var(--display); }
+    h1 span { color: var(--green); }
+    .intro { max-width: 470px; color: var(--muted); font-size: 15px; line-height: 1.8; }
+    .actions { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; margin-top: 29px; }
+    .button { display: inline-flex; min-height: 46px; align-items: center; gap: 13px; padding: 0 18px; background: var(--green); color: var(--white); font-size: 13px; font-weight: 600; transition: .2s ease; }
+    .button:hover { transform: translateY(-2px); background: #144b35; }
+    .button .arrow { font-size: 17px; }
+    .simple-link { font-size: 13px; font-weight: 600; }
+    .simple-link:hover { color: var(--green); }
+    .art { position: relative; padding: 18px 0 15px 16px; }
+    .art:before { content: ""; position: absolute; inset: 0 23px 28px 0; border: 1px solid #cbd2c9; z-index: -1; }
+    .portrait-frame { position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: #dce3dc; box-shadow: 11px 11px 0 var(--lime); }
+    .portrait-frame img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 32%; }
+    .photo-caption { position: absolute; left: 14px; bottom: 14px; padding: 9px 11px; background: #17211de8; color: #fff; font: 10px var(--mono); text-transform: uppercase; }
+    .section { padding: 72px 0; border-top: 1px solid var(--line); }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 25px; margin-bottom: 32px; }
+    .index { margin-bottom: 12px; color: var(--green); font-size: 10px; }
+    h2 { margin: 0; font: 600 36px/1.1 var(--display); }
+    .section-desc { max-width: 390px; margin: 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+    .projects { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .project { min-height: 275px; display: flex; flex-direction: column; justify-content: space-between; padding: 24px; background: #fbfcf9; border: 1px solid var(--line); transition: transform .2s, border-color .2s; }
+    .project:hover { transform: translateY(-3px); border-color: var(--green); }
+    .project-top { display: flex; justify-content: space-between; align-items: start; gap: 16px; }
+    .tag { color: var(--muted); font-size: 9px; }
+    .number { width: 36px; height: 36px; display: grid; place-items: center; background: var(--lime); font: 12px var(--mono); }
+    h3 { margin: 27px 0 9px; font: 600 21px var(--display); }
+    .project p { max-width: 430px; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.75; }
+    .project-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 24px; }
+    .tools { color: var(--green); font: 9px var(--mono); }
+    .project-link { font-size: 12px; font-weight: 700; white-space: nowrap; }
+    .project-link span { color: var(--green); }
+    .hint { margin: 14px 0 0; color: var(--muted); font: 9px var(--mono); }
+    .about { display: grid; grid-template-columns: 1fr 1fr; gap: 76px; }
+    .bio { max-width: 500px; margin-top: 20px; color: var(--muted); font-size: 14px; line-height: 1.8; }
+    .bio p { margin: 0 0 14px; }
+    .skills { display: grid; grid-template-columns: 1fr 1fr; align-content: start; }
+    .skill { padding: 15px 0; border-bottom: 1px solid var(--line); }
+    .skill:nth-child(odd) { margin-right: 20px; }
+    .skill strong { display: block; margin-bottom: 5px; font: 600 14px var(--display); }
+    .skill small { color: var(--muted); font: 9px var(--mono); }
+    .contact { background: var(--green); color: var(--white); }
+    .contact-inner { display: flex; justify-content: space-between; align-items: center; gap: 32px; padding: 49px 0; }
+    .contact .index { color: var(--lime); }
+    .contact h2 { max-width: 520px; }
+    .contact p { margin: 11px 0 0; color: #d8e5dc; font-size: 13px; }
+    .contact .button { flex: 0 0 auto; color: var(--ink); background: var(--lime); }
+    .contact .button:hover { background: #e5ff91; }
+    footer { display: flex; justify-content: space-between; gap: 18px; padding: 21px 0; color: var(--muted); font: 9px var(--mono); }
+    .social { display: flex; gap: 19px; }
+    @keyframes rise { from { transform: scaleY(.12); opacity: .35; } to { transform: scaleY(1); opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) { *, *:before, *:after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 40px, 560px); }
+      .hero { grid-template-columns: 1fr; gap: 34px; padding: 58px 0 66px; }
+      h1 { font-size: clamp(49px, 12vw, 68px); }
+      .art { width: calc(100% - 14px); max-width: 500px; margin: auto; }
+      .section { padding: 56px 0; }
+      .section-head { align-items: start; flex-direction: column; gap: 14px; }
+      .projects, .about { grid-template-columns: 1fr; }
+      .about { gap: 24px; }
+      .contact-inner { align-items: start; flex-direction: column; padding: 40px 0; }
+    }
+    @media (max-width: 430px) {
+      .wrap { width: calc(100% - 32px); }
+      .top { height: 66px; }
+      nav { gap: 13px; font-size: 11px; }
+      nav a:first-child { display: none; }
+      .portrait-frame { box-shadow: 8px 8px 0 var(--lime); }
+      .project { padding: 20px; }
+      footer { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap top" id="home">
+    <a class="brand" href="#home"><img src="logo.svg" alt=""><span>RISHRAJ SENGER<b>.</b></span></a>
+    <nav aria-label="Main navigation"><a href="#work">Portfolio</a><a href="#about">About</a><a class="nav-cta" href="#contact">Contact ↗</a></nav>
+  </header>
+  <main>
+    <section class="wrap hero">
+      <div>
+        <div class="kicker"><span class="pulse" aria-hidden="true"></span> Data analyst · MIS & operations</div>
+        <h1>Turning data<br>into <span>direction.</span></h1>
+        <p class="intro">Hey, I'm <strong>Rishraj Senger</strong>. I build accurate reports, practical dashboards, and streamlined workflows that turn operational data into clear sales insights.</p>
+        <div class="actions"><a class="button" href="#work">Explore my experience <span class="arrow" aria-hidden="true">↘</span></a><a class="simple-link" href="mailto:Thakurishraj.senger@gmail.com">Let's talk ↗</a></div>
+      </div>
+      <div class="art">
+        <div class="portrait-frame">
+          <img src="profile-web.jpg" alt="Professional portrait of Rishraj Senger">
+          <div class="photo-caption">Data Analyst · Gurgaon</div>
+        </div>
+      </div>
+    </section>
+    <section class="wrap section" id="work">
+      <div class="section-head"><div><div class="index">01 / Experience</div><h2>Work that adds up.</h2></div><p class="section-desc">Data analysis, MIS reporting, and back-office operations across sales and manufacturing environments.</p></div>
+      <div class="projects">
+        <article class="project"><div><div class="project-top"><span class="tag">LG TRADING ENGINEERING PVT LTD · GURGAON</span><span class="number">01</span></div><h3>Data Analyst</h3><p>Dec 2024 – Present. Build Excel and Google Sheets reports, analyze DMS sales data, prepare incentive reports, and resolve data discrepancies. Created dynamic data-entry forms and proformas with Google Apps Script.</p></div><div class="project-foot"><span class="tools">EXCEL · GOOGLE SHEETS · APPS SCRIPT</span><span class="project-link">Current role</span></div></article>
+        <article class="project"><div><div class="project-top"><span class="tag">DORMER CONCEPT LLP · GURGAON</span><span class="number">02</span></div><h3>Back Operations & MIS Executive</h3><p>Nov 2023 – Dec 2024. Managed back-office operations, maintained company databases, and prepared monthly employee closure reports for payroll and performance tracking.</p></div><div class="project-foot"><span class="tools">MIS REPORTING · OPERATIONS</span><span class="project-link">2023 — 2024</span></div></article>
+        <article class="project"><div><div class="project-top"><span class="tag">ZONAC KNITTING MACHINE PVT LTD · GREATER NOIDA</span><span class="number">03</span></div><h3>Back Operations Executive</h3><p>Feb 2023 – Jul 2023. Supported finishing-department back-office operations and maintained employee reports for departmental tracking and resource management.</p></div><div class="project-foot"><span class="tools">REPORTING · DATA MANAGEMENT</span><span class="project-link">2023</span></div></article>
+      </div>
+    </section>
+    <section class="wrap section" id="about">
+      <div class="about"><div><div class="index">02 / About me</div><h2>Curious mind.<br>Clear answers.</h2><div class="bio"><p>I'm a detail-oriented Data Analyst and Operations Executive with experience in data management, MIS reporting, sales analysis, and workflow automation.</p><p><strong>Education</strong><br>Bachelor of Computer Applications (BCA), 2023<br>Harlal Institute of Management and Technology, Greater Noida</p><p><strong>Languages</strong><br>English · Hindi</p></div></div>
+        <div class="skills" aria-label="Skills and tools"><div class="skill"><strong>MS Excel</strong><small>Advanced · Reporting</small></div><div class="skill"><strong>Google Sheets</strong><small>Advanced · Dashboards</small></div><div class="skill"><strong>Power BI</strong><small>Basic · Visualization</small></div><div class="skill"><strong>SQL</strong><small>Basic · Data queries</small></div><div class="skill"><strong>Google Apps Script</strong><small>Workflow automation</small></div><div class="skill"><strong>DMS Systems</strong><small>Sales data · Reporting</small></div><div class="skill"><strong>MIS & operations</strong><small>Reporting · Supervision</small></div><div class="skill"><strong>Data quality</strong><small>Cleaning · Validation</small></div></div>
+      </div>
+    </section>
+    <section class="contact" id="contact"><div class="wrap contact-inner"><div><div class="index">03 / Get in touch</div><h2>Let's make the numbers useful.</h2><p>Sec-39, Gurgaon, Haryana · <a href="tel:9810503813">9810503813</a></p></div><a class="button" href="mailto:Thakurishraj.senger@gmail.com">Email me <span class="arrow" aria-hidden="true">↗</span></a></div></section>
+  </main>
+  <footer class="wrap"><span class="micro">© 2026 RISHRAJ SENGER · DATA ANALYST</span><div class="social"><a href="mailto:Thakurishraj.senger@gmail.com">Thakurishraj.senger@gmail.com ↗</a></div></footer>
+</body>
+</html>
