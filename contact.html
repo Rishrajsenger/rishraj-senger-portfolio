@@ -60,6 +60,7 @@
     input:focus, select:focus, textarea:focus { outline: 2px solid var(--green); outline-offset: 1px; border-color: transparent; }
     input::placeholder, textarea::placeholder { color: #828b85; }
     .form-bottom { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-top: 21px; }
+    .icon { display: inline-block; width: 15px; height: 15px; flex: 0 0 15px; vertical-align: middle; }
     .privacy { max-width: 250px; margin: 0; color: var(--muted); font-size: 10px; line-height: 1.5; }
     .button { min-height: 46px; display: inline-flex; align-items: center; justify-content: center; gap: 12px; padding: 0 17px; border: 0; background: var(--green); color: var(--white); font: 700 12px var(--sans); cursor: pointer; transition: background .2s, transform .2s; }
     .button:hover { background: #144b35; transform: translateY(-2px); }
@@ -102,7 +103,7 @@
         <h1 id="contact-title">Let's talk about data.</h1>
         <p class="intro">Have a role, reporting challenge, or project in mind? Send me a note and I'll get back to you.</p>
         <div class="details">
-          <div class="detail"><span class="detail-label">Email</span><a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=Thakurishraj.senger%40gmail.com" target="_blank" rel="noreferrer">Thakurishraj.senger@gmail.com ↗</a></div>
+          <div class="detail"><span class="detail-label">Email</span><a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=Thakurishraj.senger%40gmail.com" target="_blank" rel="noreferrer">Thakurishraj.senger@gmail.com <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a></div>
           <div class="detail"><span class="detail-label">Phone</span><a href="tel:9810503813">9810503813</a></div>
           <div class="detail"><span class="detail-label">Based in</span><span class="detail-value">Gurgaon, Haryana, India</span></div>
         </div>
@@ -120,14 +121,14 @@
             <div class="field"><label for="topic">What is this about? <span class="required">*</span></label><select id="topic" name="topic" required><option value="" selected disabled>Select a topic</option><option>Data analyst opportunity</option><option>Dashboard or reporting project</option><option>Data and operations consulting</option><option>Other</option></select></div>
             <div class="field full"><label for="message">Message <span class="required">*</span></label><textarea id="message" name="message" maxlength="5000" required placeholder="Tell me a little about what you have in mind."></textarea></div>
           </div>
-          <div class="form-bottom"><p class="privacy">Submitting this form stores your message and contact details in a private follow-up sheet.</p><button class="button" id="submit-button" type="submit">Send message <span aria-hidden="true">↗</span></button></div>
+          <div class="form-bottom"><p class="privacy">Submitting this form stores your message and contact details in a private follow-up sheet.</p><button class="button" id="submit-button" type="submit">Send message <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></button></div>
           <p class="status" id="form-status" role="status" aria-live="polite"></p>
         </form>
         <iframe class="sr-only" name="sheet-frame" title="Form submission response"></iframe>
       </section>
     </div>
   </main>
-  <footer class="wrap"><span class="micro">© 2026 RISHRAJ SENGER · DATA ANALYST</span><a href="index.html">Back to portfolio ↗</a></footer>
+  <footer class="wrap"><span class="micro">© 2026 RISHRAJ SENGER · DATA ANALYST</span><a href="index.html"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7"/><path d="M5 9v12h14V9M9 21v-7h6v7"/></svg> Back to portfolio</a></footer>
   <script>
     const scriptUrl = 'https://script.google.com/macros/s/AKfycby-quCteOUVhDjrvolh3UhIp4AXvZfv6fd1qzEyEsG6Pct1B_6EjXGYXe4HQD9XeZ-W4A/exec';
     const form = document.getElementById('contact-form');
