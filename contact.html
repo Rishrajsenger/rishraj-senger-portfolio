@@ -72,6 +72,13 @@
     .button:disabled { opacity: .65; cursor: wait; transform: none; }
     .status { min-height: 20px; margin: 15px 0 0; color: var(--green); font-size: 12px; }
     .status.error { color: #a43d28; }
+    .thank-you-dialog { width: min(420px, calc(100% - 32px)); padding: 28px; border: 1px solid var(--line); background: var(--white); color: var(--ink); box-shadow: 0 24px 80px #17211d40; }
+    .thank-you-dialog::backdrop { background: #17211d99; backdrop-filter: blur(3px); }
+    .thank-you-mark { width: 42px; height: 42px; display: grid; place-items: center; margin-bottom: 20px; background: var(--lime); color: var(--green); }
+    .thank-you-mark svg { width: 22px; height: 22px; }
+    .thank-you-dialog h2 { margin: 0 0 10px; font: 600 24px/1.2 var(--display); }
+    .thank-you-dialog p:not(.index) { margin: 0 0 22px; color: var(--muted); font-size: 13px; line-height: 1.65; }
+    .thank-you-dialog form { margin: 0; }
     .honeypot { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
     .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
     footer { display: flex; justify-content: space-between; gap: 18px; padding: 21px 0; border-top: 1px solid var(--line); color: var(--muted); font: 9px var(--mono); }
@@ -141,6 +148,13 @@
       </section>
     </div>
   </main>
+  <dialog class="thank-you-dialog" id="thank-you-dialog" aria-labelledby="thank-you-title">
+    <div class="thank-you-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg></div>
+    <div class="index">Message received</div>
+    <h2 id="thank-you-title">Thank you for reaching out.</h2>
+    <p>Your message has been saved. Rishraj will be in touch soon.</p>
+    <form method="dialog"><button class="button" type="submit">Done</button></form>
+  </dialog>
   <footer class="wrap"><span class="micro">© 2026 RISHRAJ SENGER · DATA ANALYST</span><a href="index.html"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7"/><path d="M5 9v12h14V9M9 21v-7h6v7"/></svg> Back to portfolio</a></footer>
   <script>
     const menuToggle = document.getElementById('menu-toggle');
@@ -167,6 +181,7 @@
     const form = document.getElementById('contact-form');
     const formStatus = document.getElementById('form-status');
     const submitButton = document.getElementById('submit-button');
+    const thankYouDialog = document.getElementById('thank-you-dialog');
     let pending = false;
     let timeoutId;
 
@@ -199,7 +214,11 @@
       submitButton.disabled = false;
       formStatus.textContent = event.data.message;
       formStatus.classList.toggle('error', !event.data.ok);
-      if (event.data.ok) form.reset();
+      if (event.data.ok) {
+        form.reset();
+        formStatus.textContent = '';
+        thankYouDialog.showModal();
+      }
     });
   </script>
 </body>
